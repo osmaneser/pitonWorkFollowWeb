@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-6">
+    <app-status [status]="'Tamamlanan'" [color]="'bg-c-green'" [icon]="'fa-flag'" [count]="finishedCount"></app-status>
+  </div>
+  <div class="col-6">
+    <app-status  [status]="'Devam Eden'" [color]="'bg-c-orenge'" [icon]="'fa-pause'"  [count]="continuingCount"></app-status>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <app-status  [status]="'Günü Geçmiş'" [color]="'bg-c-pink'" [icon]="'fa-clock'" [count]="passDayCount"></app-status>
+  </div>
+  <div class="col-6">
+    <app-status  [status]="'Başlamamış'" [color]="'bg-c-blue'" [icon]="'fa-play'" [count]="notStartCount"></app-status>
+  </div>
+</div>
+
+
+
+<div class="card">
+  <div class="card-block w-100">
+
+<app-importance-info
+[percent]="getImportanceDetail(enumImportance.Insignificant) / totalCount * 100"
+[avarage]="getImportanceDetail(enumImportance.Insignificant) +'/'+ totalCount"
+[importanceValue]="enumImportance.Insignificant"
+></app-importance-info>
+
+<app-importance-info
+[percent]="getImportanceDetail(enumImportance.Normal) / totalCount * 100"
+[avarage]="getImportanceDetail(enumImportance.Normal) +'/'+ totalCount"
+[importanceValue]="enumImportance.Normal"
+></app-importance-info>
+
+
+<app-importance-info
+[percent]="getImportanceDetail(enumImportance.Significant) / totalCount * 100"
+[avarage]="getImportanceDetail(enumImportance.Significant) +'/'+ totalCount"
+[importanceValue]="enumImportance.Significant"
+></app-importance-info>
+
+<app-importance-info
+[percent]="getImportanceDetail(enumImportance.Critical) / totalCount * 100"
+[avarage]="getImportanceDetail(enumImportance.Critical) +'/'+ totalCount"
+[importanceValue]="enumImportance.Critical"
+></app-importance-info>
+
+  </div>
+</div>

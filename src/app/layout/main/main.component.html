@@ -1,0 +1,121 @@
+<div class="pcoded"
+     [attr.nav-type]="navType"
+     [attr.theme-layout]="themeLayout"
+     [attr.layout-type]="layoutType"
+     [attr.vertical-placement]="verticalPlacement"
+     [attr.vertical-layout]="verticalLayout"
+     [attr.pcoded-device-type]="deviceType"
+     [attr.vertical-nav-type]="verticalNavType"
+     [attr.vertical-effect]="verticalEffect"
+     [attr.vnavigation-view]="vNavigationView"
+     (window:resize)="onResize($event)">
+  <div class="pcoded-overlay-box"></div>
+  <div class="pcoded-container navbar-wrapper">
+    <nav class="navbar header-navbar pcoded-header p-0" [attr.pcoded-header-position]="pcodedHeaderPosition" [attr.header-theme]="headerTheme">
+      <div class="navbar-wrapper">
+        <div class="navbar-logo" [attr.logo-theme]="logoTheme">
+          <a class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()" (clickOutside)="onClickedOutside($event)">
+            <i class="fas fa-ellipsis-h"></i>
+          </a>
+          <a [routerLink]="['/']">
+            LOGO
+          </a>
+          <a (click)="onMobileMenu()" class="mobile-options">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+
+        <div class="navbar-container">
+          <div>
+            <ul class="nav-left">
+              <li>
+                <div class="sidebar_toggle"><a href="javascript:;" (click)="toggleOpened()"><i class="ti-menu f-18"></i></a></div>
+              </li>
+            </ul>
+            <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
+              <li class="user-profile header-notification">
+                <a [routerLink]="['/']">
+                  <span>John Doe</span>
+                  <i class="ti-angle-down"></i>
+                </a>
+                <ul class="show-notification profile-notification">
+                  <li>
+                    <a [routerLink]="['/profile']">
+                      <i class="ti-settings"></i> Profil
+                    </a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/logout']">
+                      <i class="ti-layout-sidebar-left"></i> Çıkış
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="pcoded-main-container" [style.margin-top]="headerFixedMargin">
+      <div class="pcoded-wrapper">
+        <nav id="main_navbar" class=" pcoded-navbar" (clickOutside)="onClickedOutside($event)" [attr.pcoded-header-position]="pcodedHeaderPosition" [attr.navbar-theme]="navBarTheme" [attr.active-item-theme]="activeItemTheme" sub-item-theme="theme2" active-item-style="style0" [attr.pcoded-navbar-position]="pcodedSidebarPosition">
+          <div class="sidebar_toggle"><a href="javascript:;"><i class="icon-close icons"></i></a></div>
+          <div class="pcoded-inner-navbar main-menu" appAccordion>
+            <div class="">
+              <div class="main-menu-header">
+                <!-- İMAGE -->
+                <div class="user-details">
+                  <span>John Doe</span>
+                  <span id="more-details" (click)="toggleOpenedSidebar()">UX Designer<i class="ti-angle-down"></i></span>
+                </div>
+              </div>
+            </div>
+            <div slimScroll width="100%" height="calc(100% - 80px)" size="4px" color="#fff" opacity="0.3" allowPageScroll="false">
+              <div class="d-color">
+                <div class="pcoded-navigatio-lavel" [attr.menu-title-theme]="menuTitleTheme"></div>
+                <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder" [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder">
+                  <li [routerLink]="['/dashboard']" appAccordionLink >
+                    <a appAccordionToggle class="f-w-400" (click)="selectedMenu = 'home'">
+                      <span class="pcoded-micon"><i class="fas fa-chart-line"></i></span>
+                      <span class="pcoded-mtext" [ngClass]="selectedMenu=='home'?'f-w-700':''">Ana Safya</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder" [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder">
+                  <li [routerLink]="['/works']" appAccordionLink >
+                    <a appAccordionToggle (click)="selectedMenu = 'works'">
+                      <span class="pcoded-micon"><i class="fas fa-list"></i></span>
+                      <span class="pcoded-mtext" [ngClass]="selectedMenu=='works'?'f-w-700':''">İş Listesi</span>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="pcoded-item pcoded-left-item" [attr.item-border]="itemBorder" [attr.item-border-style]="itemBorderStyle" [attr.subitem-border]="subItemBorder">
+                  <li [routerLink]="['/add']" appAccordionLink >
+                    <a appAccordionToggle (click)="selectedMenu = 'add'">
+                      <span class="pcoded-micon"><i class="fas fa-plus"></i></span>
+                      <span class="pcoded-mtext" [ngClass]="selectedMenu=='add'?'f-w-700':''">Yeni İş Ekle</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="pcoded-content">
+          <div class="pcoded-inner-content">
+            <div class="main-body">
+              <div class="page-wrapper">
+                <div class="page-body">
+                  <router-outlet>
+                  </router-outlet>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

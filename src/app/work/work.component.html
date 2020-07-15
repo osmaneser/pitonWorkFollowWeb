@@ -1,0 +1,24 @@
+
+
+  <div class="d-flex m-b-10" style="justify-content: space-around;">
+    <div class="label-main m-1 flex-1" (click)="getFilterList(1)">
+      <label class="label label-lg full-width f-20" [ngClass]="selectedFilter==1 ?' label-primary':' label-inverse'">Günlük</label>
+    </div>
+
+    <div class="label-main m-1 flex-1" (click)="getFilterList(2)">
+      <label class="label label-lg full-width f-20" [ngClass]="selectedFilter==2 ?' label-primary':' label-inverse'">Haftalık</label>
+    </div>
+
+    <div class="label-main m-1 flex-1" (click)="getFilterList(3)">
+      <label class="label label-lg full-width f-20" [ngClass]="selectedFilter==3 ?' label-primary':' label-inverse'">Aylık</label>
+    </div>
+
+    <div class="label-main m-1 flex-1" (click)="getFilterList(4)">
+      <label class="label label-lg full-width f-20" [ngClass]="selectedFilter==4 ?' label-primary':' label-inverse'">Tümü</label>
+    </div>
+
+  </div>
+
+<div *ngFor="let item of listWork">
+  <app-work-item [work]="item" (onDeleteWork)="getFilterList(selectedFilter)" ></app-work-item>
+</div>

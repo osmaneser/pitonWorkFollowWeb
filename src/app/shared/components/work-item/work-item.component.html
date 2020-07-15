@@ -1,0 +1,24 @@
+<div class="card visitor-card">
+  <div class="card-block" [ngClass]="
+    {
+      'status-not-start':enumStatus.NotStart == work.status,
+      'status-continue':enumStatus.Continue == work.status,
+      'status-done':enumStatus.Done == work.status,
+      'status-pass-day':enumStatus.PassDay == work.status
+    }
+    ">
+      <h5>
+        {{work.name}}
+        <label for="" class="label label-inverse-danger">
+          {{getImportanceInfo(work.importance)}}
+        </label>
+      </h5>
+      <h2 class="p-t-15 m-0">
+        <span class="text-muted f-16">{{work.description}}</span>
+      </h2>
+      <h5>Tarih:</h5><span>{{work.workDate | date : 'dd-MM-yyyy'}}</span>
+      <i (click)="deleteWork(work.id)" class="fas fa-trash f-20"></i>
+      <i *ngIf="work.status == enumStatus.NotStart || work.status == enumStatus.PassDay" (click)="startWork(work.id)" class="fas fa-play f-20 m-r-10"></i>
+      <i *ngIf="work.status == enumStatus.Continue" (click)="finishWork(work.id)" class="fas fa-flag f-20 m-r-10"></i>
+  </div>
+</div>

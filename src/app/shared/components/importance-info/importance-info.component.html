@@ -1,0 +1,23 @@
+<div class="card-progress p-t-10">
+  <div class="row ">
+    <div class="col-sm-2 text-right ">
+      <label class="text-muted ">{{getImportanceValue(importanceValue)}}</label>
+    </div>
+    <div class="col-sm-8 ">
+      <div class="progress ">
+          <div class="progress-bar"
+          [ngClass]="
+          {
+            'bg-c-pink':enumImportance.Critical == importanceValue,
+            'bg-c-orenge':enumImportance.Significant==importanceValue,
+            'bg-c-blue':enumImportance.Normal==importanceValue,
+            'bg-c-green':enumImportance.Insignificant==importanceValue
+          }"
+          [ngStyle]="{'width.%':percent}"></div>
+      </div>
+    </div>
+    <div class="col-sm-2 ">
+      <label class="text-muted ">{{percent | number :'1.2-2'}}%</label>
+    </div>
+  </div>
+</div>

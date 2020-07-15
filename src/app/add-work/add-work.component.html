@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-header ">
+    <div class="card-header-left ">
+      <h5>Yeni İş Ekleme Paneli</h5>
+    </div>
+  </div>
+  <div class="card-block p-0">
+
+    <form class="example-form" [formGroup]="addWorkForm" (ngSubmit)="addWork()">
+      <div class="">
+       <div class="d-flex flex-column p-5 full-width">
+        <mat-form-field class="full-width ">
+          <mat-label>İş Adı</mat-label>
+          <input matInput placeholder="Örn: Markete git" formControlName="name" >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Açıklama Giriniz</mat-label>
+          <textarea matInput placeholder="Örn: Domates, salatalık alınacak." formControlName="description" rows="6"></textarea>
+        </mat-form-field>
+
+        <mat-form-field color="accent" appearance="legacy">
+          <mat-label>Tarih Seçiniz</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="workDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Önem Derecesi</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="option" formControlName="importance">
+            <mat-option *ngFor="let item of selecList" [value]="item.id">
+              {{item.optionName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit">Kaydet</button>
+
+       </div>
+      </div>
+
+    </form>
+  </div>
+</div>
